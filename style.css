@@ -6,3 +6,19 @@ section{
 img{
     height: 150px;
 }
+
+#discover{
+    flex-direction: column;
+}
+
+#tendances{
+    flex-direction: column;
+}
+
+#submenu{
+    background-color: aqua;
+}
+
+.test{
+    background-color: red;
+}

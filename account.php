@@ -28,18 +28,75 @@ var_dump($_SESSION);
 <a href="album.php">Creer un album</a>
 
 <div class="btn">
-    <form method="">
+    <form method="post">
     <input id="searchbar" onkeyup="find()" type="text" placeholder="Search">
-    <input type="submit" value="GO">
     </form>
+    <div><ul id="submenu"></ul></div>
     
-    <button id="album">Découverte</button>
-    <button id="album">Tendance</button>
+    <button id="decouverte">Découverte</button>
+    <button id="tendance">Tendance</button>
 </div>
 
 <div id="card"></div>
 
+<div id="discover"></div>
 
-    <script src="script.js"></script>
+<div id="tendances"></div>
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    
+    //const axios = require('axios');
+
+    find()
+
+    function find(){
+        // Requêter un utilisateur avec un ID donné.
+
+        let str = document.querySelector("#searchbar");
+        let propositions = document.querySelector("#submenu");
+
+        if (str.value !== ""){
+            axios.get(/* '/user?ID=2' */ 'https://api.themoviedb.org/3/search/movie?api_key=db5946f8d90a2a4716c7c2c3520a77b3&query='+str.value)
+
+                .then(function (response) {
+                    // en cas de réussite de la requête
+                    console.log(response.data.results);
+
+                    propositions.innerHTML = "";
+
+                    for (let i = 0; i <= 4; i++) {
+                        let result = document.createElement("li");
+                        result.innerHTML = "<p>"+response.data.results[i].original_title+"</p>"
+                        propositions.appendChild(result);
+                    }
+                })
+
+                .catch(function (error) {
+                    // en cas d’échec de la requête
+                    console.log(error);
+                })
+
+                .then(function () {
+                    // dans tous les cas
+                    console.log("AAAAAAAAA");
+                });
+        }else{
+            propositions.innerHTML = "";
+        }
+
+    }
+
+
+
+</script>
+<script src="script.js"></script>
 </body>
 </html>
