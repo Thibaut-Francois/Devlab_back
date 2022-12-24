@@ -43,7 +43,7 @@ var_dump($_SESSION);
 
 <div id="tendances"></div>
 
-
+<script src="script/script.js"></script>
 
 
 
@@ -69,12 +69,14 @@ var_dump($_SESSION);
                 .then(function (response) {
                     // en cas de réussite de la requête
                     console.log(response.data.results);
+                    let movie = response.data.results
 
                     propositions.innerHTML = "";
 
                     for (let i = 0; i <= 4; i++) {
                         let result = document.createElement("li");
-                        result.innerHTML = "<p>"+response.data.results[i].original_title+"</p>"
+                        let myLink = "single.php?id="+movie[i].id
+                        result.innerHTML = "<p><a href="+myLink+">"+movie[i].original_title+"</a></p>"
                         propositions.appendChild(result);
                     }
                 })
@@ -97,6 +99,6 @@ var_dump($_SESSION);
 
 
 </script>
-<script src="script.js"></script>
+
 </body>
 </html>

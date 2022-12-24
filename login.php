@@ -32,9 +32,9 @@
 
 <?php
 
-require_once 'user.php';
-require_once 'connection.php';
-require_once 'intruder.php';
+require_once 'class/user.php';
+require_once 'class/connection.php';
+require_once 'class/intruder.php';
 $connection = new Connection();
 session_start();
 

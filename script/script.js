@@ -25,7 +25,6 @@ fetch('https://api.themoviedb.org/3/discover/movie?api_key=db5946f8d90a2a4716c7c
                     films.innerHTML = "<p>"+movie.title+"</p>"
                     films.setAttribute('token', movie.id)
                     //console.log(films.id)
-                    // films.setAttribute("class", "unClick")
                     inHtml.appendChild(films)
 
 
@@ -35,7 +34,8 @@ fetch('https://api.themoviedb.org/3/discover/movie?api_key=db5946f8d90a2a4716c7c
                         image.setAttribute("src", "https://bougezvousavecnous.fr/wp-content/uploads/2020/10/no-image.jpg")
                     }else{
                         image.setAttribute("src", "https://image.tmdb.org/t/p/w500"+movie.poster_path)
-                    }   
+                    }
+                    image.setAttribute("class", "mov_img")
                     films.appendChild(image)
                 
                 
@@ -95,7 +95,8 @@ function decouverte(){
                 image.setAttribute("src", "https://bougezvousavecnous.fr/wp-content/uploads/2020/10/no-image.jpg")
             }else{
                 image.setAttribute("src", "https://image.tmdb.org/t/p/w500"+movie.poster_path)
-            }   
+            }
+            image.setAttribute("class", "mov_img")
             films.appendChild(image)
         
         })
@@ -136,7 +137,8 @@ function tendance(){
                 image.setAttribute("src", "https://bougezvousavecnous.fr/wp-content/uploads/2020/10/no-image.jpg")
             }else{
                 image.setAttribute("src", "https://image.tmdb.org/t/p/w500"+movie.poster_path)
-            }   
+            }
+            image.setAttribute("class", "mov_img")
             films.appendChild(image)
         
         })

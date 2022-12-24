@@ -18,8 +18,8 @@
 <a href="./account.php">RETOUR</a>
 
 <?php
-require_once 'connection.php';
-require_once 'myAlbum.php';
+require_once 'class/connection.php';
+require_once 'class/myAlbum.php';
 $connection = new Connection();
 session_start();
 
