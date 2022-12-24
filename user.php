@@ -6,9 +6,7 @@ class User{
         public string $password,
         public string $password2,
         public string $pseudo,
-    )
-    {
-    }
+    ){}
 
     public function verify():bool{
         $isValid = true;

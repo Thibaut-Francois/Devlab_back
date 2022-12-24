@@ -32,8 +32,10 @@ fetch('https://api.themoviedb.org/3/discover/movie?release_date.desc&api_key=db5
                         image.setAttribute("src", "https://bougezvousavecnous.fr/wp-content/uploads/2020/10/no-image.jpg")
                     }else{
                         image.setAttribute("src", "https://image.tmdb.org/t/p/w500"+movie.poster_path)
-                    }   
+                    }
+                    image.setAttribute("class", "mov_img")
                     films.appendChild(image)
+
                 
                 
                 })
