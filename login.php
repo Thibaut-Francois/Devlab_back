@@ -9,8 +9,37 @@
 
     <link rel="icon" href="https://w7.pngwing.com/pngs/192/1000/png-transparent-graphic-film-roll-film-drawing-film-angle-photography-black.png" />
 </head>
-<body>
+<body>g
 
+
+
+<div class="container">
+    <div>
+        <input id="item-1" type="radio" name="item" class="sign-in" checked><label for="item-1" class="item">Sign-In</label>
+        <input id="item-2" type="radio" name="item" class="sign-up" checked><label for="item-1" class="item">Sign-Up</label>
+        <div class="sign-in-htm">
+            <form method="post">
+                <input type="email" name="email" placeholder="E-mail"/><br>
+                <input type="password" name="password1" placeholder="mot de passe"/><br>
+                <input name="login" type="submit" value="Se connecter" />
+            </form>
+        </div>
+        <div class="sign-up-htm">
+            <form method="post">
+                <input class="" type="text" name="pseudo" placeholder="pseudonyme"/>
+                <input type="email" name="email" placeholder="E-mail"/>
+                <input type="password" name="password1" placeholder="mot de passe"/>
+                <input type="password" name="password2" placeholder="mot de passe vérif"/>
+                <input name="signin" type="submit" value="S'enregistrer" />
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--
 <h1>Page de connection</h1>
 
 <h2>S'enregistrer</h2>
@@ -28,6 +57,7 @@
     <input type="password" name="password1" placeholder="mot de passe"/><br>
     <input name="login" type="submit" value="Se connecter" />
 </form>
+-->
 
 
 <?php
@@ -91,10 +121,10 @@ if ($_POST){
             header('Location: account.php');
         }
 
-        
 
 
-        
+
+
 
 
     }

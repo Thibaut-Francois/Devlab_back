@@ -1,0 +1,141 @@
+Index: ../devlab_back/login.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!doctype html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\"\n        content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <title>Document</title>\n\n    <link rel=\"icon\" href=\"https://w7.pngwing.com/pngs/192/1000/png-transparent-graphic-film-roll-film-drawing-film-angle-photography-black.png\" />\n</head>\n<body>\n\n<h1>Page de connection</h1>\n\n<h2>S'enregistrer</h2>\n<form method=\"post\">\n    <input type=\"text\" name=\"pseudo\" placeholder=\"pseudonyme\"/><br>\n    <input type=\"email\" name=\"email\" placeholder=\"E-mail\"/><br>\n    <input type=\"password\" name=\"password1\" placeholder=\"mot de passe\"/>\n    <input type=\"password\" name=\"password2\" placeholder=\"mot de passe vérif\"/><br>\n    <input name=\"signin\" type=\"submit\" value=\"S'enregistrer\" />\n</form>\n\n<h2>Se connecter</h2>\n<form method=\"post\">\n    <input type=\"email\" name=\"email\" placeholder=\"E-mail\"/><br>\n    <input type=\"password\" name=\"password1\" placeholder=\"mot de passe\"/><br>\n    <input name=\"login\" type=\"submit\" value=\"Se connecter\" />\n</form>\n\n\n<?php\n\nrequire_once 'user.php';\nrequire_once 'connection.php';\nrequire_once 'intruder.php';\n$connection = new Connection();\nsession_start();\n\nvar_dump($_SESSION);\n\nif(isset($_POST['disconnect'])){\n    unset($_SESSION['user']);\n    header('Location: ./login.php');\n}\n\n\nif ($_POST){\n    if(isset($_POST['signin'])){\n        $user = new User(\n            $_POST['email'],\n            $_POST['password1'],\n            $_POST['password2'],\n            $_POST['pseudo'],\n        );\n        if ($user->verify()){\n            if ($connection->antiDoppelganger($user->email)){\n                //save to databse\n                $result = $connection->insert($user);\n\n                if ($result){\n                    echo 'Vous avez créé votre compte avec succés !';\n\n                } else {\n                    echo 'L\\'opération a échouée';\n                }\n            }else{\n                echo 'Cette adresse email est déja utilisée';\n            }\n\n        } else {\n            echo \"Votre formulaire n'est pas valide\";\n        }\n\n    }elseif (isset($_POST['login'])){\n        $intruder = new Intruder(\n            $_POST['password1'],\n            $_POST['email'],\n        );\n\n        $oui =$connection->isExisting($intruder->password, $intruder->email);\n\n        if(empty($oui[0])){\n            echo \"<br> Votre email et/ou votre mot de passe n'est pas valide\";\n        }else{\n            $_SESSION['user']=$oui[0];\n\n            //print_r($_SESSION['user']);\n\n            header('Location: account.php');\n        }\n\n        \n\n\n        \n\n\n    }\n}\n\n\n\n\n?>\n<form action=\"./login.php\" method=\"post\">\n    <button name=\"disconnect\" type=\"submit\">Déconnexion</button>\n</form>\n\n</body>\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../devlab_back/login.php b/../devlab_back/login.php
+--- a/../devlab_back/login.php	(revision 3567348ca7e6166832adac535db2f8d88a5f6184)
++++ b/../devlab_back/login.php	(date 1671723773465)
+@@ -11,6 +11,35 @@
+ </head>
+ <body>
+ 
++
++
++<div class="container">
++    <div>
++        <input id="item-1" type="radio" name="item" class="sign-in" checked><label for="item-1" class="item">Sign-In</label>
++        <input id="item-2" type="radio" name="item" class="sign-up" checked><label for="item-1" class="item">Sign-Up</label>
++        <div class="sign-in-htm">
++            <form method="post">
++                <input type="email" name="email" placeholder="E-mail"/><br>
++                <input type="password" name="password1" placeholder="mot de passe"/><br>
++                <input name="login" type="submit" value="Se connecter" />
++            </form>
++        </div>
++        <div class="sign-up-htm">
++            <form method="post">
++                <input type="text" name="pseudo" placeholder="pseudonyme"/>
++                <input type="email" name="email" placeholder="E-mail"/>
++                <input type="password" name="password1" placeholder="mot de passe"/>
++                <input type="password" name="password2" placeholder="mot de passe vérif"/>
++                <input name="signin" type="submit" value="S'enregistrer" />
++            </form>
++        </div>
++    </div>
++</div>
++
++
++
++
++<!--
+ <h1>Page de connection</h1>
+ 
+ <h2>S'enregistrer</h2>
+@@ -28,6 +57,7 @@
+     <input type="password" name="password1" placeholder="mot de passe"/><br>
+     <input name="login" type="submit" value="Se connecter" />
+ </form>
++-->
+ 
+ 
+ <?php
+@@ -91,10 +121,10 @@
+             header('Location: account.php');
+         }
+ 
+-        
++
+ 
+ 
+-        
++
+ 
+ 
+     }
+Index: ../devlab_back/.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"8c120f3f-6694-4aea-ab9e-72288c263300\" name=\"Changes\" comment=\"\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ComposerSettings\">\n    <execution />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2IX6jWBzpfp7q5ZZFEMxpuCdz5a\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"8c120f3f-6694-4aea-ab9e-72288c263300\" name=\"Changes\" comment=\"\" />\n      <created>1670315717994</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1670315717994</updated>\n      <workItem from=\"1670315722299\" duration=\"260000\" />\n      <workItem from=\"1670315998581\" duration=\"397000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"Guillaume\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../devlab_back/.idea/workspace.xml b/../devlab_back/.idea/workspace.xml
+--- a/../devlab_back/.idea/workspace.xml	(revision 3567348ca7e6166832adac535db2f8d88a5f6184)
++++ b/../devlab_back/.idea/workspace.xml	(date 1671723780982)
+@@ -1,7 +1,13 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="8c120f3f-6694-4aea-ab9e-72288c263300" name="Changes" comment="" />
++    <list default="true" id="8c120f3f-6694-4aea-ab9e-72288c263300" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -22,18 +28,18 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -43,7 +49,8 @@
+       <option name="presentableId" value="Default" />
+       <updated>1670315717994</updated>
+       <workItem from="1670315722299" duration="260000" />
+-      <workItem from="1670315998581" duration="397000" />
++      <workItem from="1670315998581" duration="3971000" />
++      <workItem from="1671722626758" duration="557000" />
+     </task>
+     <servers />
+   </component>
+@@ -61,7 +68,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="Guillaume" />
++                        <option value="origin/Guillaume" />
+                       </list>
+                     </value>
+                   </entry>
