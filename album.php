@@ -51,7 +51,7 @@ if($_POST){
     }else{
         $plc=false;
     }
-    
+
     $album = new album(
         $_POST['name'],
         $plc,
@@ -59,7 +59,7 @@ if($_POST){
 
     $result = $connection->insertAlbum($album);
     $oui =  $connection->linkUserAlbum($result[0]['id'], $id);
-    
+
     if($oui){
         echo 'Vous avez ajouté votre album avec succés !';
     } else {
@@ -92,6 +92,6 @@ foreach ($myAlbum as $value){
 //print_r($myAlbum);
 ?>
 
-    
+
 </body>
 </html>

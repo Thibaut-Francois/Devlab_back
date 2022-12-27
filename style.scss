@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+p{
+  margin: 0;
+}
 
 body {
   margin: 0;
@@ -17,12 +19,6 @@ body {
 :before {
   box-sizing: border-box
 }
-
-
-
-
-
-
 
 .container {
   width: 100%;
@@ -72,7 +68,7 @@ body {
 
 .login-container .item {
   font-size: 22px;
-  margin-right: 15px;
+
   padding-bottom: 5px;
   margin: 0 15px 10px 0;
   display: inline-block;
@@ -140,12 +136,13 @@ body {
 .login-container .sign-up:checked+.item+.login-form .sign-up-htm {
   transform: rotate(0);
 }
-
 .hr {
   height: 2px;
   margin: 60px 0 50px 0;
   background: rgba(255, 255, 255, .2);
 }
+
+
 
 .footer {
   display: flex;
@@ -162,5 +159,146 @@ body {
 }
 
 
+header{
+  padding-top: 50px;
+  gap: 30px;
+  background: hsla(223, 36%, 18%, 1);
+  z-index: 12;
+  width: 150px;
+  border-right: hsla(224, 33%, 22%, 1) 2px solid ;
+  position: fixed;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
 
+
+  iconify-icon{
+    font-size: 32px;
+  }
+
+  button{
+    border: none;
+    background: hsla(223, 36%, 18%, 1);
+    .disconect{
+      color: white;
+      font-size: 32px;
+
+      &:hover{
+        color: #009dff;
+      }
+    }
+  }
+
+
+
+
+  .logo{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    div{
+      border-radius: 90px;
+      margin-bottom: 20px;
+      background-color:hsla(224, 33%, 22%, 1) ;
+      width: 50px;
+      height: 50px;
+    }
+
+
+    h1{
+      margin: 0px;
+      font-size: 15px;
+    }
+  }
+
+
+  .album-list{
+    border-radius: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: auto;
+    background-color:hsla(224, 33%, 22%, 1) ;
+    border:hsla(224, 33%, 22%, 1) solid 4px ;
+
+    .album-logo{
+      text-align: center;
+      width: 35px;
+      height: 35px;
+      background: hsla(223, 36%, 18%, 1);
+      border-radius: 90px;
+
+    }
+
+    iconify-icon{
+      color: white;
+      font-size: 35px;
+    }
+  }
+}
+
+main{
+
+  margin-left: 180px;
+}
+
+
+#new{
+  display: flex;
+  justify-content: right;
+  height: 450px;
+  width: 100%;
+  h1{
+    top: 4px;
+    right: 4px;
+    position: absolute;
+
+
+  }
+  img{
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0px 0px 0px 90px;
+    opacity: 89;
+    display: flex;
+    justify-content: right;
+
+  }
+
+}
+
+#card{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  gap: 15px;
+  height: 250px;
+ section{
+
+   width: 271px;
+   display: flex;
+   flex-direction: column-reverse;
+   img{
+     width: 271px;
+     height: 170px;
+     object-fit: cover;
+     object-position: top;
+     border-radius: 15px;
+     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24);
+
+
+     }
+   p{
+     height: 19px;
+     margin: 0;
+   }
+ }
+}
 
