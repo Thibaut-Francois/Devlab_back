@@ -19,6 +19,11 @@ img{
     background-color: aqua;
 }
 
+#publiqueAlbum{
+    display: none;
+    flex-direction: column;
+}
+
 .test{
     background-color: red;
 }

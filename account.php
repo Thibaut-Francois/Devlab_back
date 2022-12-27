@@ -12,6 +12,8 @@
 </head>
 <body>
 <?php
+require_once 'class/connection.php';
+$connection = new Connection();
 session_start();
 var_dump($_SESSION);
 ?>
@@ -35,6 +37,7 @@ var_dump($_SESSION);
     
     <button id="decouverte">Découverte</button>
     <button id="tendance">Tendance</button>
+    <button id="albumsPubliques">Albums Publiques</button>
 </div>
 
 <div id="card"></div>
@@ -43,10 +46,22 @@ var_dump($_SESSION);
 
 <div id="tendances"></div>
 
+<div id="publiqueAlbum">
+    <?php
+    $allAlbums = $connection->getPublicAlbum();
+
+    foreach ($allAlbums as $value){
+
+
+        echo "<div>";
+            echo $value['name']." possède ".$value['like']." like(s)" ;
+        echo "</div>";
+
+    }
+    ?>
+</div>
+
 <script src="script/script.js"></script>
-
-
-
 
 
 

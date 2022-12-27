@@ -24,14 +24,14 @@ class Connection{
 
         ]);
     }
-/*
+
     public function getAll():array{
         $sth = $this->pdo->prepare("SELECT * FROM user");
         $sth->execute();
         return $sth->fetchAll(PDO::FETCH_ASSOC);
 
 
-    }*/
+    }
 /*
     public function delete(int $id):bool{
         $query = 'DELETE FROM user
@@ -79,6 +79,15 @@ class Connection{
         $sth->execute(['id'=>$id]);
         return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+    public function getPublicAlbum():array{
+        $sth = $this->pdo->prepare("SELECT * FROM album
+                                          WHERE isPublic = 1");
+        $sth->execute();
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     public function insertAlbum(Album $album):array{
         $query = 'INSERT INTO album (name, isPublic, `like`)

@@ -90,6 +90,10 @@ foreach ($myAlbum as $value){
     echo'</ul>';
 }
 //print_r($myAlbum);
+
+
+$oui = $connection->getPublicAlbum();
+var_dump($oui);
 ?>
 
     

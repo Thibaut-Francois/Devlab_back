@@ -61,12 +61,16 @@ btn.addEventListener("click", decouverte)
 btn = document.querySelector("#tendance")
 btn.addEventListener("click", tendance)
 
-function decouverte(){
-    const dansHtml = document.querySelector("#discover")
+btn = document.querySelector("#albumsPubliques")
+btn.addEventListener("click", albumsPubliques)
 
-    dansHtml.style.display = "flex"
+
+function decouverte(){
+    document.querySelector("#discover").style.display = "flex"
+
     document.querySelector("#card").style.display ="none"
     document.querySelector("#tendances").style.display ="none"
+    document.querySelector("#publiqueAlbum").style.display ="none"
 
     fetch('https://api.themoviedb.org/3/discover/movie?release_date.desc&api_key=db5946f8d90a2a4716c7c2c3520a77b3')
     .then(response => response.json())
@@ -105,11 +109,11 @@ function decouverte(){
 
 
 function tendance(){
-    const dansHtml = document.querySelector("#tendances")
+    document.querySelector("#tendances").style.display = "flex"
 
-    dansHtml.style.display = "flex"
     document.querySelector("#card").style.display ="none"
     document.querySelector("#discover").style.display ="none"
+    document.querySelector("#publiqueAlbum").style.display ="none"
 
     fetch('https://api.themoviedb.org/3/trending/movie/week?release_date.desc&api_key=db5946f8d90a2a4716c7c2c3520a77b3')
     .then(response => response.json())
@@ -143,4 +147,12 @@ function tendance(){
         
         })
     })
+}
+
+function albumsPubliques(){
+    document.querySelector("#publiqueAlbum").style.display = "flex"
+
+    document.querySelector("#card").style.display ="none"
+    document.querySelector("#discover").style.display ="none"
+    document.querySelector("#tendances").style.display ="none"
 }
