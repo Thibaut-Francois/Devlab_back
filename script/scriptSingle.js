@@ -4,7 +4,7 @@
 function detaille(id){
     let lien = 'https://api.themoviedb.org/3/movie/'+id+'?api_key=db5946f8d90a2a4716c7c2c3520a77b3'
     console.log(lien)
-    fetch('lien')
+    fetch(lien)
         .then(response => response.json())
         .then(data => {
             console.log(data)

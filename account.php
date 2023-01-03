@@ -31,7 +31,8 @@ var_dump($_SESSION);
 
 <div class="btn">
     <form method="post">
-    <input id="searchbar" onkeyup="find()" type="text" placeholder="Search">
+        <input id="searchbar" onkeyup="find()" type="text" name="search" placeholder="Search">
+        <input type="submit" value="Chercher">
     </form>
     <div><ul id="submenu"></ul></div>
     
@@ -40,18 +41,21 @@ var_dump($_SESSION);
     <button id="albumsPubliques">Albums Publiques</button>
 </div>
 
+
 <div id="card"></div>
+
+<div id="result"></div>
 
 <div id="discover"></div>
 
 <div id="tendances"></div>
 
 <div id="publiqueAlbum">
+
     <?php
     $allAlbums = $connection->getPublicAlbum();
 
     foreach ($allAlbums as $value){
-
 
         echo "<div>";
             echo $value['name']." possède ".$value['like']." like(s)" ;
@@ -62,6 +66,11 @@ var_dump($_SESSION);
 </div>
 
 <script src="script/script.js"></script>
+<script>
+    if (<?= !empty($_POST)?"true":"false" ?>){
+        results('<?= $_POST['search'] ?>');
+    }
+</script>
 
 
 

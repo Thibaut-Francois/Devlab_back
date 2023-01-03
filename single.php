@@ -12,7 +12,7 @@
 
 <script src="script/scriptSingle.js"></script>
 <script>
-    detaille(<?php $_GET['id'] ?>)
+    detaille(<?php echo $_GET['id'] ?>)
 </script>
 
 

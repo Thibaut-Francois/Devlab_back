@@ -93,7 +93,7 @@ foreach ($myAlbum as $value){
 
 
 $oui = $connection->getPublicAlbum();
-var_dump($oui);
+
 ?>
 
     
