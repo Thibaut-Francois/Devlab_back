@@ -10,7 +10,7 @@
 // &include_adult=true
 
 
-fetch('https://api.themoviedb.org/3/discover/movie?api_key=db5946f8d90a2a4716c7c2c3520a77b3&with_genres=10749')
+fetch('https://api.themoviedb.org/3/discover/movie?api_key=db5946f8d90a2a4716c7c2c3520a77b3&with_genres=16')
             .then(response => response.json())
             .then(data =>{
                 //console.log(data['results'])
@@ -24,7 +24,7 @@ fetch('https://api.themoviedb.org/3/discover/movie?api_key=db5946f8d90a2a4716c7c
                     const films = document.createElement("section")
                     films.innerHTML = "<p>"+movie.title+"</p>"
                     films.setAttribute('token', movie.id)
-                    //console.log(films.id)
+                    films.setAttribute("class", "unClick")
                     inHtml.appendChild(films)
 
 
@@ -41,18 +41,15 @@ fetch('https://api.themoviedb.org/3/discover/movie?api_key=db5946f8d90a2a4716c7c
                 
                 })
 
-                // document.querySelectorAll('.unClick').forEach(el => {
-                //     el.addEventListener('click', event => {
-                //         //console.log(el.getAttribute('token'))
-                //         enDetails(el.getAttribute('token'))
-                //         })
-                //     })
+                document.querySelectorAll('.unClick').forEach(el => {
+                    el.addEventListener('click', event => {
+                        //console.log(el.getAttribute('token'))
+                        window.location.replace("single.php?id="+el.getAttribute('token'));
+                    })
+                })
 
             })
 
-// function find(){
-//     let input = document.getElementById('searchbar').value
-//     input=input.toLowerCase();
 
 
 btn = document.querySelector("#decouverte")
@@ -90,8 +87,7 @@ function decouverte(){
             const films = document.createElement("section")
             films.innerHTML = "<p>"+movie.title+"</p>"
             films.setAttribute('token', movie.id)
-            //console.log(films.id)
-            // films.setAttribute("class", "unClick")
+            films.setAttribute("class", "unClick")
             dansHtml2.appendChild(films)
 
 
@@ -104,6 +100,13 @@ function decouverte(){
             image.setAttribute("class", "mov_img")
             films.appendChild(image)
         
+        })
+
+        document.querySelectorAll('.unClick').forEach(el => {
+            el.addEventListener('click', event => {
+                //console.log(el.getAttribute('token'))
+                window.location.replace("single.php?id="+el.getAttribute('token'));
+            })
         })
     })
 }
@@ -133,8 +136,7 @@ function tendance(){
             const films = document.createElement("section")
             films.innerHTML = "<p>"+movie.title+"</p>"
             films.setAttribute('token', movie.id)
-            //console.log(films.id)
-            // films.setAttribute("class", "unClick")
+            films.setAttribute("class", "unClick")
             dansHtml2.appendChild(films)
 
 
@@ -147,6 +149,13 @@ function tendance(){
             image.setAttribute("class", "mov_img")
             films.appendChild(image)
         
+        })
+
+        document.querySelectorAll('.unClick').forEach(el => {
+            el.addEventListener('click', event => {
+                //console.log(el.getAttribute('token'))
+                window.location.replace("single.php?id="+el.getAttribute('token'));
+            })
         })
     })
 }
@@ -194,8 +203,7 @@ function results(key){
                     const films = document.createElement("section")
                     films.innerHTML = "<p>"+movie.title+"</p>"
                     films.setAttribute('token', movie.id)
-                    //console.log(movie.title)
-                    // films.setAttribute("class", "unClick")
+                    films.setAttribute("class", "unClick")
                     dansHtml2.appendChild(films)
 
 
@@ -208,6 +216,12 @@ function results(key){
                     image.setAttribute("class", "mov_img")
                     films.appendChild(image)
 
+                })
+                document.querySelectorAll('.unClick').forEach(el => {
+                    el.addEventListener('click', event => {
+                        //console.log(el.getAttribute('token'))
+                        window.location.replace("single.php?id="+el.getAttribute('token'));
+                    })
                 })
             }
 

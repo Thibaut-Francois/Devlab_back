@@ -14,7 +14,7 @@ function detaille(id){
 
 
             const films = document.createElement("section")
-            films.innerHTML = "<p>" + data['original_title'] + "</p>"
+            films.innerHTML = "<p>" + data['original_title'] + "</p>" + "<p>" + data['overview'] + "</p>" + "<p>" + data['release_date'] + "</p>"
             //films.setAttribute('token', movie.id)
             // films.setAttribute("class", "unClick")
             inHtml.appendChild(films)

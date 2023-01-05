@@ -8,6 +8,7 @@
     <title>Single</title>
 </head>
 <body>
+<a href="./account.php">RETOUR</a>
 <h2>Un film</h2>
 
 <script src="script/scriptSingle.js"></script>
