@@ -7,6 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Single</title>
 </head>
+<?php
+session_start();
+
+if (empty($_SESSION)){
+    header('Location: login.php');
+}
+?>
+
 <body>
 <a href="./account.php">RETOUR</a>
 <h2>Un film</h2>

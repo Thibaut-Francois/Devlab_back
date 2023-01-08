@@ -16,6 +16,10 @@ require_once 'class/connection.php';
 $connection = new Connection();
 session_start();
 var_dump($_SESSION);
+
+if (empty($_SESSION)){
+    header('Location: login.php');
+}
 ?>
 
 <h1>DEVLAB BACK</h1>
@@ -88,7 +92,7 @@ var_dump($_SESSION);
         let propositions = document.querySelector("#submenu");
 
         if (str.value !== ""){
-            axios.get(/* '/user?ID=2' */ 'https://api.themoviedb.org/3/search/movie?api_key=db5946f8d90a2a4716c7c2c3520a77b3&query='+str.value)
+            axios.get(/* '/user?ID=2' */ 'https://api.themoviedb.org/3/search/movie?api_key=db5946f8d90a2a4716c7c2c3520a77b3&language=fr-FR&query='+str.value)
 
                 .then(function (response) {
                     // en cas de réussite de la requête

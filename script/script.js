@@ -1,16 +1,16 @@
-// https://api.themoviedb.org/3/movie/200%7B1%7D?api_key=db5946f8d90a2a4716c7c2c3520a77b3&language=en-US
+// https://api.themoviedb.org/3/movie/200%7B1%7D?api_key=db5946f8d90a2a4716c7c2c3520a77b3&language=fr-FR
 // /movie/id
 
-// https://api.themoviedb.org/3/discover/movie?primary_release_year=2010&sort_by=vote_average&api_key=db5946f8d90a2a4716c7c2c3520a77b3
+// https://api.themoviedb.org/3/discover/movie?primary_release_year=2010&sort_by=vote_average&api_key=db5946f8d90a2a4716c7c2c3520a77b3&language=fr-FR
 
-// https://api.themoviedb.org/3/discover/movie?release_date.desc&api_key=db5946f8d90a2a4716c7c2c3520a77b3
+// https://api.themoviedb.org/3/discover/movie?release_date.desc&api_key=db5946f8d90a2a4716c7c2c3520a77b3&language=fr-FR
 
-// https://api.themoviedb.org/3/discover/movie?api_key=db5946f8d90a2a4716c7c2c3520a77b3&with_genres=10749
+// https://api.themoviedb.org/3/discover/movie?api_key=db5946f8d90a2a4716c7c2c3520a77b3&with_genres=10749&language=fr-FR
 
 // &include_adult=true
 
 
-fetch('https://api.themoviedb.org/3/discover/movie?api_key=db5946f8d90a2a4716c7c2c3520a77b3&with_genres=16')
+fetch('https://api.themoviedb.org/3/discover/movie?api_key=db5946f8d90a2a4716c7c2c3520a77b3&with_genres=16&language=fr-FR')
             .then(response => response.json())
             .then(data =>{
                 //console.log(data['results'])
@@ -70,7 +70,7 @@ function decouverte(){
     document.querySelector("#publiqueAlbum").style.display ="none"
     document.querySelector("#result").style.display = "none"
 
-    fetch('https://api.themoviedb.org/3/discover/movie?release_date.desc&api_key=db5946f8d90a2a4716c7c2c3520a77b3')
+    fetch('https://api.themoviedb.org/3/discover/movie?release_date.desc&api_key=db5946f8d90a2a4716c7c2c3520a77b3&language=fr-FR')
     .then(response => response.json())
     .then(data =>{
 
@@ -120,7 +120,7 @@ function tendance(){
     document.querySelector("#publiqueAlbum").style.display ="none"
     document.querySelector("#result").style.display = "none"
 
-    fetch('https://api.themoviedb.org/3/trending/movie/week?release_date.desc&api_key=db5946f8d90a2a4716c7c2c3520a77b3')
+    fetch('https://api.themoviedb.org/3/trending/movie/week?release_date.desc&api_key=db5946f8d90a2a4716c7c2c3520a77b3&language=fr-FR')
     .then(response => response.json())
     .then(data =>{
 
@@ -179,7 +179,7 @@ function results(key){
 
 
 
-    fetch('https://api.themoviedb.org/3/search/movie?api_key=db5946f8d90a2a4716c7c2c3520a77b3&query='+key)
+    fetch('https://api.themoviedb.org/3/search/movie?api_key=db5946f8d90a2a4716c7c2c3520a77b3&language=fr-FR&query='+key)
         .then(response => response.json())
         .then(data =>{
 

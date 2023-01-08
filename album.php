@@ -23,6 +23,10 @@ require_once 'class/myAlbum.php';
 $connection = new Connection();
 session_start();
 
+if (empty($_SESSION)){
+    header('Location: login.php');
+}
+
 var_dump($_SESSION);
 echo '<h1>Bienvenue '. $_SESSION['user']['pseudo'].'</h1>';
 
