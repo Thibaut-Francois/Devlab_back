@@ -84,10 +84,29 @@ foreach ($myAlbum as $value){
 
     echo'<ul>';
     ?>
-    <li>
+    <li class="point">
+        <!--
+        <script>
+            myLi = document.querySelectorAll(".point")
+            console.log("myLi")
+            myLi.innerHTML= "AA2"
+        </script>
+
+        <ul>
+            <?php /* <?php echo $value['name']; ?>
+            foreach(as){
+
+            }*/
+            ?>
+        </ul>
+        -->
         <?php
-        print_r($value['name']);
-        //echo '<br><a href="deletePet.php?id='. $value['id'].'">supprimer cet animal</a>';
+            print_r($value['name']);
+            if ($value['isPublic'] === 0 ){
+                var_dump($value['id']);
+                echo '<br> <a href="deleteAlbum.php?id='. $value['id'].'">supprimer cet album</a>';
+            }
+
         ?>
     </li> <?php
 

@@ -32,9 +32,9 @@ class Connection{
 
 
     }
-/*
-    public function delete(int $id):bool{
-        $query = 'DELETE FROM user
+
+    public function deleteAlbum(int $id):bool{
+        $query = 'DELETE FROM album
                 WHERE id=:id';
 
         $sth=$this->pdo->prepare($query);
@@ -42,7 +42,18 @@ class Connection{
         return $sth->execute([
             'id'=>$id,
         ]);
-    }*/
+    }
+
+    public function followYourMasterInTheGrave(int $id):bool{
+        $query = 'DELETE FROM user_album
+                  WHERE album_id=:id';
+
+        $sth=$this->pdo->prepare($query);
+
+        return $sth->execute([
+            'id'=>$id,
+        ]);
+    }
 
     public function isExisting(string $pw, string $email):array{
         $pass = md5($pw. 'UN_PETIT_GRAIN2SABLE');
@@ -72,7 +83,7 @@ class Connection{
 
 
     public function getMyAlbums($id):array{
-        $sth = $this->pdo->prepare("SELECT album.`name` FROM album
+        $sth = $this->pdo->prepare("SELECT album.`id`, album.`name`, album.`isPublic` FROM album
                                 LEFT JOIN user_album ON album.id = user_album.album_id
                                 LEFT JOIN user ON user.id = user_album.user_id
                                 WHERE :id = user_album.user_id;");
@@ -121,5 +132,26 @@ class Connection{
             'userId'=>$userId,
             'albumId'=>$albumId,
         ]);
+    }
+
+    public function linkMovieAlbum($movieId, $albumId){
+        $query = 'INSERT INTO movie_album (`movie_id`, `album_id`)
+                VALUES (:movieId, :albumId)';
+
+        $statement= $this->pdo->prepare($query);
+
+        return $statement->execute([
+            'movieId'=>$movieId,
+            'albumId'=>47,
+        ]);
+    }
+
+    public function getMyMoviesByAlbums($id):array{
+        $sth = $this->pdo->prepare("SELECT movie_album.`movie_id` FROM movie_album
+                                LEFT JOIN user_album ON album.id = user_album.album_id
+                                LEFT JOIN user ON user.id = user_album.user_id
+                                WHERE :id = user_album.user_id;");
+        $sth->execute(['id'=>$id]);
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 }
