@@ -7,7 +7,7 @@ class Connection{
 
     public function __construct()
     {
-        $this->pdo = new PDO('mysql:dbname=devlab_back;host=127.0.0.1','root','root');
+        $this->pdo = new PDO('mysql:dbname=devlab_back;host=127.0.0.1','root','');
     }
 
     public function insert(User $user)
@@ -101,6 +101,8 @@ class Connection{
         ]);
         return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    
 
     public function linkUserAlbum($albumId, $userId){
         $query = 'INSERT INTO user_album (`user_id`, `album_id`)

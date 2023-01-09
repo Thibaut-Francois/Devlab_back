@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
     <title>Album</title>
 
     <link rel="icon" href="https://w7.pngwing.com/pngs/192/1000/png-transparent-graphic-film-roll-film-drawing-film-angle-photography-black.png" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="album.css">
 </head>
 <body>
 
-<form action="./login.php" method="post">
-    <button name="disconnect" type="submit">Déconnexion</button>
-</form>
-
-<a href="./account.php">RETOUR</a>
+<a href="./account.php"><iconify-icon icon="material-symbols:arrow-back"></iconify-icon></a>
 
 <?php
 require_once 'connection.php';
@@ -23,8 +20,6 @@ require_once 'myAlbum.php';
 $connection = new Connection();
 session_start();
 
-var_dump($_SESSION);
-echo '<h1>Bienvenue '. $_SESSION['user']['pseudo'].'</h1>';
 
 ?>
 <h2>Ajouter un album</h2>
@@ -69,8 +64,6 @@ if($_POST){
 }
 
 ?>
-
-
 
 <h2>Vos albums :</h2>
 <?php

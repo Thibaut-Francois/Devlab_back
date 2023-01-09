@@ -16,7 +16,9 @@ session_start();
     <iconify-icon icon="material-symbols:home"></iconify-icon>
     <div class="logo">
         <div></div>
-        <?php echo '<h1>Bienvenue '. $_SESSION['user']['pseudo'].'</h1>';
+
+        <?php
+            echo '<h1>Bienvenue '. $_SESSION['user']['pseudo'].'</h1>';
         ?>
     </div>
 
@@ -26,11 +28,7 @@ session_start();
         <div class="album-logo"></div>
         <div class="album-logo"></div>
         <div class="album-logo"></div>
-
     </div>
-
-
-
 
     <div class="btn">
         <form method="post">
@@ -39,8 +37,6 @@ session_start();
 
         <div><ul id="submenu"></ul></div>
 
-        <button id="decouverte">Découverte</button>
-        <button id="tendance">Tendance</button>
 
     </div>
 
@@ -51,14 +47,28 @@ session_start();
 
 <main>
 
-
-    <div id="new">
-
-
-        <img src="img/Star-Wars-The-Force-Awakens-Poster-Final-Paysage.jpg" alt="">
-
+    <div class="sertch">
+        <form method="post">
+            <input id="searchbar" onkeyup="find()" type="text" placeholder="Search">
+        </form>
     </div>
 
+
+
+
+
+
+
+
+
+    <div id="new">
+        <img src="img/Star-Wars-The-Force-Awakens-Poster-Final-Paysage.jpg" alt="">
+    </div>
+
+    <div class="categorie">
+        <button id="decouverte">Découverte</button>
+        <button id="tendance">Tendance</button>
+    </div>
 <div id="card"></div>
 
 <div id="discover"></div>

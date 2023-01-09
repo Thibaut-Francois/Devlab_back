@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  color: #ffffff;
+  background: hsl(223deg, 36%, 18%);
+  font-family: "Montserrat", monospace;
+  font-weight: bold;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+iconify-icon {
+  color: white;
+  font-size: 32px;
+}
+iconify-icon:hover {
+  color: #009dff;
+}
+
+/*# sourceMappingURL=album.css.map */
