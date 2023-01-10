@@ -31,9 +31,7 @@ session_start();
     </div>
 
     <div class="btn">
-        <form method="post">
-            <input id="searchbar" onkeyup="find()" type="text" placeholder="Search">
-        </form>
+        
 
         <div><ul id="submenu"></ul></div>
 
@@ -52,15 +50,6 @@ session_start();
             <input id="searchbar" onkeyup="find()" type="text" placeholder="Search">
         </form>
     </div>
-
-
-
-
-
-
-
-
-
     <div id="new">
         <img src="img/Star-Wars-The-Force-Awakens-Poster-Final-Paysage.jpg" alt="">
     </div>

@@ -25,7 +25,7 @@
 <a href="./account.php"><iconify-icon icon="material-symbols:arrow-back"></iconify-icon></a>
     <h2>Ajouter un album</h2>
     <div class="container">
-        <div>
+        <div div-contain>
             <form method="post">
                 <input type="text" name="name" placeholder="nom de l'album"/><br>
                 <div>
@@ -36,6 +36,27 @@
                 </div>
                 <input name="" type="submit" value="Creer" />
             </form>
+        </div>
+        <div>
+            <h2>Vos albums :</h2>
+            <?php
+            $myAlbum = $connection->getMyAlbums($_SESSION['user']['id']);
+
+            foreach ($myAlbum as $value){
+
+                echo'<ul>';
+                ?>
+                <li>
+                    <?php
+                    print_r($value['name']);
+                    //echo '<br><a href="deletePet.php?id='. $value['id'].'">supprimer cet animal</a>';
+                    ?>
+                </li> <?php
+
+                echo'</ul>';
+            }
+            //print_r($myAlbum);
+            ?>
         </div>
     </div>
 
@@ -72,25 +93,7 @@ if($_POST){
 
 ?>
 
-<h2>Vos albums :</h2>
-<?php
-$myAlbum = $connection->getMyAlbums($_SESSION['user']['id']);
 
-foreach ($myAlbum as $value){
-
-    echo'<ul>';
-    ?>
-    <li>
-        <?php
-        print_r($value['name']);
-        //echo '<br><a href="deletePet.php?id='. $value['id'].'">supprimer cet animal</a>';
-        ?>
-    </li> <?php
-
-    echo'</ul>';
-}
-//print_r($myAlbum);
-?>
 </main>
 
 </body>
