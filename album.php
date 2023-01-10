@@ -103,7 +103,6 @@ foreach ($myAlbum as $value){
         <?php
             print_r($value['name']);
             if ($value['isPublic'] === 0 ){
-                var_dump($value['id']);
                 echo '<br> <a href="deleteAlbum.php?id='. $value['id'].'">supprimer cet album</a>';
             }
 

@@ -142,7 +142,7 @@ class Connection{
 
         return $statement->execute([
             'movieId'=>$movieId,
-            'albumId'=>47,
+            'albumId'=>$albumId,
         ]);
     }
 
