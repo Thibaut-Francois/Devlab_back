@@ -12,27 +12,34 @@
 </head>
 <body>
 
+<main>
+    <?php
+    require_once 'connection.php';
+    require_once 'myAlbum.php';
+    $connection = new Connection();
+    session_start();
+
+    ?>
+
+
 <a href="./account.php"><iconify-icon icon="material-symbols:arrow-back"></iconify-icon></a>
-
-<?php
-require_once 'connection.php';
-require_once 'myAlbum.php';
-$connection = new Connection();
-session_start();
-
-
-?>
-<h2>Ajouter un album</h2>
-<form method="post">
-    <input type="text" name="name" placeholder="nom de l'album"/><br>
-    <div>
-        <select name="public">
-            <option value="privé">Privé</option>
-            <option value="publique">Publique</option>
-        </select>
+    <h2>Ajouter un album</h2>
+    <div class="container">
+        <div>
+            <form method="post">
+                <input type="text" name="name" placeholder="nom de l'album"/><br>
+                <div>
+                    <select name="public">
+                        <option value="privé">Privé</option>
+                        <option value="publique">Publique</option>
+                    </select>
+                </div>
+                <input name="" type="submit" value="Creer" />
+            </form>
+        </div>
     </div>
-    <input name="" type="submit" value="Creer" />
-</form>
+
+
 
 <?php
 
@@ -84,7 +91,7 @@ foreach ($myAlbum as $value){
 }
 //print_r($myAlbum);
 ?>
-
+</main>
 
 </body>
 </html>
